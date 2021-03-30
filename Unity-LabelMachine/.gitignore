@@ -58,4 +58,4 @@ sysinfo.txt
 crashlytics-build.properties
 
 # Hide Sensitive Content
-*[Cc]onstants.cs
+*[Cc]onstants.cs*
