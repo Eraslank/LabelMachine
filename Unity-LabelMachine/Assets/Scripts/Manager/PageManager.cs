@@ -10,7 +10,6 @@ public class PageManager : MonoBehaviourSingleton<PageManager>
 {
     public List<Page> pages;
     Page currentPage;
-    public GameObject loadingPage;
 
     // Use this for initialization
     void Start()
