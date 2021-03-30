@@ -48,11 +48,11 @@ public class PageManager : MonoBehaviourSingleton<PageManager>
     {
         if (showPage)
         {
-            IConfigurablePage iCP = page.GetComponent<IConfigurablePage>();
-            if (iCP != null)
+            IConfigurablePage iCP;
+            if ((iCP = page.GetComponent<IConfigurablePage>()) != null)
                 iCP.ConfigurePage();
         }
-        page.isVisible(showPage);
+        page.SetVisible(showPage);
     }
     public Page GetPage(EPageName page)
     {

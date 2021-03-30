@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Page : MonoBehaviour 
+public class Page : MonoBehaviour, IVisible
 {
 	public EPageName pageName;
-	public void isVisible(bool state)
+
+    public bool IsVisible { get; set; }
+
+    public void SetVisible(bool state)
 	{
-		gameObject.SetActive(state);
+		gameObject.SetActive(IsVisible = state);
 	}
 }
