@@ -251,6 +251,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 132420803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bc62e0ce798b0844ba2a2475d68396d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isForeGround: 1
 --- !u!1 &217700467
 GameObject:
   m_ObjectHideFlags: 0
