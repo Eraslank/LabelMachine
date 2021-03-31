@@ -15,13 +15,11 @@ public class PageManager : MonoBehaviourSingleton<PageManager>
     void Start()
     {
         Application.targetFrameRate = 60;
-        SetPage(GetPage(EPageName.Launch), false);
-        SetPage(GetPage(EPageName.None), true);
-    }
 
-    public void OpenUrl(string url)
-    {
-        Application.OpenURL(url);
+        foreach (var page in pages)
+            page.SetVisible(false);
+
+        SetPage(GetPage(EPageName.Launch), true);
     }
 
     public void ChangePage(Page page)
