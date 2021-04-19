@@ -9,7 +9,14 @@ public class CameraPageController : Page, IConfigurablePage
     [SerializeField] private int webCamIndex = 0;
 
     private WebCamTexture webCamTexture;
-
+    public void PauseRecording()
+    {
+        webCamTexture.Pause();
+    }
+    public void StartRecording()
+    {
+        webCamTexture.Play();
+    }
     public void ConfigurePage()
     {
         PlayWebCamera();
@@ -29,13 +36,13 @@ public class CameraPageController : Page, IConfigurablePage
 
         webCamTexture.Play();
 
-        float aspect = (float)webCamTexture.width / (float)webCamTexture.height;
+        float aspect = (float)webCamTexture.height / (float)webCamTexture.width;
         rawImage.GetComponent<AspectRatioFitter>().aspectRatio = aspect;
     }
 
     private void Update()
     {
-        if(Input.GetMouseButtonDown(0))     //DEVELOPER TOOLS
+        if(Input.GetMouseButtonDown(1))     //DEVELOPER TOOLS
         {
             PageManager.Instance.ChangePage(EPageName.Launch);
         }
