@@ -27,6 +27,7 @@ namespace LabelMachine
 
         public LabelController labelController;
         public ImageController imageController;
+        public ImageLabelRelationController imageLabelRelationController;
 
     }
     public class Program

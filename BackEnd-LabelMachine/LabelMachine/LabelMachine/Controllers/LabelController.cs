@@ -54,6 +54,13 @@ namespace LabelMachine.Controllers
                 return Ok("Başarılı");
             return BadRequest("Hata");
         }
+        [NonAction]
+        public IActionResult Create(Label model)
+        {
+            if (_labelService.Create(model))
+                return Ok("Başarılı");
+            return BadRequest("Hata");
+        }
         [HttpPut("{id:length(24)}")]
         public IActionResult Update(string id, CreateLabelReq labelIn)
         {
@@ -90,18 +97,23 @@ namespace LabelMachine.Controllers
         }
 
         [NonAction]
-        public void CreateLabelIfNotExist(string label)
+        public string CreateLabelIfNotExist(string label)
         {
             if (!CheckIfExist(label))
-                Create(new CreateLabelReq() { LabelName = label });
+            {
+                var _label = new Label(new CreateLabelReq() { LabelName = label });
+                Create(_label);
+                return _label.Id;
+            }
+            return "";
         }
         [NonAction]
-        public void CreateLabelIfNotExist(List<CreateLabelReq> labels)
+        public IEnumerable<string> CreateLabelIfNotExist(List<CreateLabelReq> labels)
         {
             foreach (var label in labels)
             {
                 if (!CheckIfExist(label.LabelName))
-                    Create(label);
+                    yield return CreateLabelIfNotExist(label.LabelName);
             }
         }
     }

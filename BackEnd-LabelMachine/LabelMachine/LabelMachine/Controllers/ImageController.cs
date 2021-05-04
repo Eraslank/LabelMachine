@@ -41,13 +41,21 @@ namespace LabelMachine.Controllers
         [HttpPost]
         public IActionResult Create(CreateImageReq model)
         {
-            SingletonReferences.Instance.labelController.CreateLabelIfNotExist(model.Labels);
+            var image = new Image(SaveByteArrayAsImage(model.FileName, model.Base64Image));
+            _imageService.Create(image);
+            List<string> labelIds = new List<string>();
+            foreach(var label in SingletonReferences.Instance.labelController.CreateLabelIfNotExist(model.Labels))
+            {
+                labelIds.Add(label);
+            }
+            SingletonReferences.Instance.imageLabelRelationController.Create(new CreateImageLabelRelationReq() { ImageId = image.Id, LabelIds = labelIds });
+            return Ok("Başarılı");
             //Create Relationship
             //SingletonReferences.Instance.labelController.GetByName()
-            var image = new Image(SaveByteArrayAsImage(model.FileName, model.Base64Image));
-            if (_imageService.Create(image))
+            /*
                 return Ok("Başarılı");
             return BadRequest("Hata");
+            */
         }
         [HttpPut("{id:length(24)}")]
         public IActionResult Update(string id, CreateImageReq imageIn)

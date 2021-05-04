@@ -36,6 +36,7 @@ namespace LabelMachine
 
             services.AddSingleton<LabelService>();
             services.AddSingleton<ImageService>();
+            services.AddSingleton<ImageLabelRelationService>();
             services.AddSwaggerGen();
             services.AddControllers();
         }
