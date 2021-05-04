@@ -9,5 +9,6 @@ namespace LabelMachine.Models.Request
     {
         public string FileName { get; set; }
         public string Base64Image { get; set; }
+        public List<CreateLabelReq> Labels { get; set; }
     }
 }

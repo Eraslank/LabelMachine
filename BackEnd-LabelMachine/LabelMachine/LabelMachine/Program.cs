@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LabelMachine.Controllers;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
@@ -9,6 +10,25 @@ using Microsoft.Extensions.Logging;
 
 namespace LabelMachine
 {
+    public class SingletonReferences
+    {
+        private static SingletonReferences _instance;
+        public static SingletonReferences Instance
+        {
+            get
+            {
+                if (_instance == null)
+                    _instance = new SingletonReferences();
+                return _instance;
+
+            }
+            private set { }
+        }
+
+        public LabelController labelController;
+        public ImageController imageController;
+
+    }
     public class Program
     {
         public static void Main(string[] args)

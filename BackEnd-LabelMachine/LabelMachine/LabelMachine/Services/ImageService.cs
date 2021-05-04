@@ -39,5 +39,7 @@ namespace LabelMachine.Services
 
         public void Remove(string id) =>
             _images.DeleteOne(image => image.Id == id);
+        public void RemoveAll() =>
+            _images.DeleteMany(image => true);
     }
 }

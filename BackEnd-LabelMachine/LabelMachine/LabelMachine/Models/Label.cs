@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson;
+﻿using LabelMachine.Models.Request;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
@@ -13,5 +14,10 @@ namespace LabelMachine.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
         public string LabelName { get; set; }
+
+        public Label(CreateLabelReq req)
+        {
+            LabelName = req.LabelName;
+        }
     }
 }

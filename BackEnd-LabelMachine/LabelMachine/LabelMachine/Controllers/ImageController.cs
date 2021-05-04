@@ -19,6 +19,7 @@ namespace LabelMachine.Controllers
         public ImageController(ImageService labelService)
         {
             _imageService = labelService;
+            SingletonReferences.Instance.imageController = this;
         }
         [HttpGet]
         public ActionResult<List<Image>> Get() =>
@@ -40,6 +41,9 @@ namespace LabelMachine.Controllers
         [HttpPost]
         public IActionResult Create(CreateImageReq model)
         {
+            SingletonReferences.Instance.labelController.CreateLabelIfNotExist(model.Labels);
+            //Create Relationship
+            //SingletonReferences.Instance.labelController.GetByName()
             var image = new Image(SaveByteArrayAsImage(model.FileName, model.Base64Image));
             if (_imageService.Create(image))
                 return Ok("Başarılı");
@@ -72,6 +76,13 @@ namespace LabelMachine.Controllers
             _imageService.Remove(image.Id);
 
             return NoContent();
+        }
+        [HttpDelete]
+        public IActionResult DeleteAll()
+        {
+            _imageService.RemoveAll();
+
+            return Ok();
         }
         private string SaveByteArrayAsImage(string fileName, string base64String)
         {

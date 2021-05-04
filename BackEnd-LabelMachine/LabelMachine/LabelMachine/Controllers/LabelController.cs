@@ -1,4 +1,5 @@
 ﻿using LabelMachine.Models;
+using LabelMachine.Models.Request;
 using LabelMachine.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -10,13 +11,15 @@ namespace LabelMachine.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LabelController: ControllerBase
+    public class LabelController : ControllerBase
     {
         private readonly LabelService _labelService;
 
         public LabelController(LabelService labelService)
         {
             _labelService = labelService;
+
+            SingletonReferences.Instance.labelController = this;
         }
         [HttpGet]
         public ActionResult<List<Label>> Get() =>
@@ -34,25 +37,32 @@ namespace LabelMachine.Controllers
 
             return label;
         }
+        [NonAction]
+        public Label GetByName(string labelName) =>
+            _labelService.GetByLabelName(labelName);
 
-        [HttpPost]
-        public IActionResult Create(Label model)
+        [NonAction]
+        public bool CheckIfExist(string labelName)
         {
-            if (_labelService.Create(model))
+            var label = _labelService.GetByLabelName(labelName);
+            return label != null;
+        }
+        [HttpPost]
+        public IActionResult Create(CreateLabelReq model)
+        {
+            if (_labelService.Create(new Label(model)))
                 return Ok("Başarılı");
             return BadRequest("Hata");
         }
         [HttpPut("{id:length(24)}")]
-        public IActionResult Update(string id, Label labelIn)
+        public IActionResult Update(string id, CreateLabelReq labelIn)
         {
-            var label = _labelService.Get(id);
-
-            if (label == null)
+            if (_labelService.Get(id) == null)
             {
                 return NotFound();
             }
 
-            _labelService.Update(id, labelIn);
+            _labelService.Update(id, new Label(labelIn));
 
             return NoContent();
         }
@@ -71,6 +81,28 @@ namespace LabelMachine.Controllers
 
             return NoContent();
         }
+        [HttpDelete]
+        public IActionResult DeleteAll()
+        {
+            _labelService.RemoveAll();
 
+            return Ok();
+        }
+
+        [NonAction]
+        public void CreateLabelIfNotExist(string label)
+        {
+            if (!CheckIfExist(label))
+                Create(new CreateLabelReq() { LabelName = label });
+        }
+        [NonAction]
+        public void CreateLabelIfNotExist(List<CreateLabelReq> labels)
+        {
+            foreach (var label in labels)
+            {
+                if (!CheckIfExist(label.LabelName))
+                    Create(label);
+            }
+        }
     }
 }

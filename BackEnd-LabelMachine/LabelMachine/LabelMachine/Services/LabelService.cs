@@ -22,6 +22,8 @@ namespace LabelMachine.Services
 
         public Label Get(string id) =>
             _labels.Find<Label>(label => label.Id == id).FirstOrDefault();
+        public Label GetByLabelName(string labelName) =>
+            _labels.Find<Label>(label => label.LabelName == labelName).FirstOrDefault();
         public bool Create(Label model)
         {
             try
@@ -39,5 +41,7 @@ namespace LabelMachine.Services
 
         public void Remove(string id) =>
             _labels.DeleteOne(label => label.Id == id);
+        public void RemoveAll() =>
+            _labels.DeleteMany(image => true);
     }
 }
