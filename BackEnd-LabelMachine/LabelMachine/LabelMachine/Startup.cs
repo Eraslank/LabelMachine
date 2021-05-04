@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LabelMachine.Models;
+using LabelMachine.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -33,6 +34,8 @@ namespace LabelMachine
             services.AddSingleton<ILabelMachineDatabaseSettings>(sp =>
                 sp.GetRequiredService<IOptions<LabelMachineDatabaseSettings>>().Value);
 
+            services.AddSingleton<LabelService>();
+            services.AddSingleton<ImageService>();
             services.AddSwaggerGen();
             services.AddControllers();
         }

@@ -34,6 +34,11 @@ E:\!Eraslank\LabelMachine\BackEnd-LabelMachine\LabelMachine\LabelMachine\obj\Deb
 E:\!Eraslank\LabelMachine\BackEnd-LabelMachine\LabelMachine\LabelMachine\obj\Debug\netcoreapp3.1\LabelMachine.pdb
 E:\!Eraslank\LabelMachine\BackEnd-LabelMachine\LabelMachine\LabelMachine\obj\Debug\netcoreapp3.1\LabelMachine.genruntimeconfig.cache
 E:\!Eraslank\LabelMachine\BackEnd-LabelMachine\LabelMachine\LabelMachine\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+E:\!Eraslank\LabelMachine\BackEnd-LabelMachine\LabelMachine\LabelMachine\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
+E:\!Eraslank\LabelMachine\BackEnd-LabelMachine\LabelMachine\LabelMachine\bin\Debug\netcoreapp3.1\System.Drawing.Common.dll
+E:\!Eraslank\LabelMachine\BackEnd-LabelMachine\LabelMachine\LabelMachine\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+E:\!Eraslank\LabelMachine\BackEnd-LabelMachine\LabelMachine\LabelMachine\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+E:\!Eraslank\LabelMachine\BackEnd-LabelMachine\LabelMachine\LabelMachine\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
 E:\!Eraslank\LabelMachine\BackEnd-LabelMachine\LabelMachine\LabelMachine\obj\Debug\netcoreapp3.1\LabelMachine.csproj.CoreCompileInputs.cache
 E:\!Eraslank\LabelMachine\BackEnd-LabelMachine\LabelMachine\LabelMachine\obj\Debug\netcoreapp3.1\LabelMachine.MvcApplicationPartsAssemblyInfo.cs
 E:\!Eraslank\LabelMachine\BackEnd-LabelMachine\LabelMachine\LabelMachine\obj\Debug\netcoreapp3.1\LabelMachine.MvcApplicationPartsAssemblyInfo.cache

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace LabelMachine.Models
 {
-    public class LabelMachineDatabaseSettings : ILabelMachineDatabaseSettings
+   public class LabelMachineDatabaseSettings : ILabelMachineDatabaseSettings
     {
         public string ImagesCollectionName { get; set; }
         public string LabelsCollectionName { get; set; }
