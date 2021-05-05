@@ -41,7 +41,7 @@ namespace LabelMachine.Controllers
         [HttpPost]
         public IActionResult Create(CreateImageReq model)
         {
-            var image = new Image(SaveByteArrayAsImage(model.FileName, model.Base64Image));
+            var image = new Image(SaveBase64AsImage(model.FileName, model.Base64Image));
             _imageService.Create(image);
             List<string> labelIds = new List<string>();
             foreach(var label in SingletonReferences.Instance.labelController.CreateLabelIfNotExist(model.Labels))
@@ -65,7 +65,7 @@ namespace LabelMachine.Controllers
                 return NotFound();
             }
 
-            var image = new Image(SaveByteArrayAsImage(imageIn.FileName, imageIn.Base64Image));
+            var image = new Image(SaveBase64AsImage(imageIn.FileName, imageIn.Base64Image));
             _imageService.Update(id, image);
 
             return NoContent();
@@ -92,7 +92,7 @@ namespace LabelMachine.Controllers
 
             return Ok();
         }
-        private string SaveByteArrayAsImage(string fileName, string base64String)
+        private string SaveBase64AsImage(string fileName, string base64String)
         {
             byte[] bytes = Convert.FromBase64String(base64String);
 
