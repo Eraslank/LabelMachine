@@ -3,14 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 public struct Servers
 {
-    public const string kAPI_SERVER = "";
-    public const string kAPI_COUNTRY_SERVER = "https://restcountries.eu/rest/v2";
+    public const string kAPI_SERVER = "https://localhost:44372/api";
 }
 public struct EndPoints
 {
-    public const string kLOGIN_ENDPOINT = "";
-    public const string kGET_ALL_COUNTRIES = "/all";
-    //https://restcountries.eu/rest/v2/all?fields=name
+    public const string kPOST_IMAGE = "/Image";
 }
 public struct HTTPMethods
 {
